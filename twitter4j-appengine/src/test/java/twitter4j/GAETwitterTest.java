@@ -15,7 +15,7 @@
  */
 package twitter4j;
 
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
+import com.google.appengine.*;//tools.development.testing.LocalServiceTestHelper;
 import junit.framework.TestCase;
 
 /**

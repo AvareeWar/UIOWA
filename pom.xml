@@ -101,4 +101,20 @@
         <module>twitter4j-stream</module>
         <module>twitter4j-media-support</module>
     </modules>
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-api-1.0-sdk -->
+<dependency>
+    <groupId>com.google.appengine</groupId>
+    <artifactId>appengine-api-1.0-sdk</artifactId>
+    <version>1.2.0</version>
+</dependency>
+
+  
+  <dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>16.0.1</version>
+</dependency>
+</dependencies>
+ 
 </project>
