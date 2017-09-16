@@ -9,6 +9,7 @@ tweets_filename = '1000tweets.txt'
 tweets_file = open(tweets_filename, "r")
 
 for line in tweets_file:
+    print "whyyy"
     try:
         # Read in one line of the file, convert it into a json object 
         tweet = json.loads(line.strip())
