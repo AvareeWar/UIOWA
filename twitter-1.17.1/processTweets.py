@@ -13,6 +13,7 @@ for line in tweets_file:
     try:
         # Read in one line of the file, convert it into a json object 
         tweet = json.loads(line.strip())
+        print tweet
         if 'text' in tweet: # only messages contains 'text' field is a tweet
             print "text: " + tweet['text'] # content of the tweet
             print "location: " + tweet['user']['location']
@@ -24,7 +25,7 @@ for line in tweets_file:
             	hashtags.append(hashtag['text'])
             print "hashtags: ", hashtags
 
-
+            break
     except:
         # read in a line is not in JSON format (sometimes error occured)
         continue

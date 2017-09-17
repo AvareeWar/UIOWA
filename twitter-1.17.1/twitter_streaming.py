@@ -7,6 +7,9 @@ except ImportError:
 # Import the necessary methods from "twitter" library
 from twitter import Twitter, OAuth, TwitterHTTPError, TwitterStream
 
+
+
+
 # Variables that contains the user credentials to access Twitter API 
 ACCESS_TOKEN = '1733593110-HkSeAJ2IWbWykgupHZHYaZkCGEhUMM3E8l2x4qi'
 ACCESS_SECRET = 'DKxpNYKFqj2pmUabow7jtMb3vkwP2N99GXjr1TM21q1f6'

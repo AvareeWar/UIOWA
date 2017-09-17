@@ -1,14 +1,54 @@
-from flask import Flask
+from flask import Flask, render_template, request
+from twitter import Twitter, OAuth, TwitterHTTPError, TwitterStream
+
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    try:
-        import json
-    except ImportError:
-        import simplejson as json
+def index():
+    # Variables that contains the user credentials to access Twitter API
+    ACCESS_TOKEN = '1733593110-HkSeAJ2IWbWykgupHZHYaZkCGEhUMM3E8l2x4qi'
+    ACCESS_SECRET = 'DKxpNYKFqj2pmUabow7jtMb3vkwP2N99GXjr1TM21q1f6'
+    CONSUMER_KEY = 'bQETXaB5RALb7kkZRuphNEsj0'
+    CONSUMER_SECRET = '7QSNB558sZDWlVCNK9fD9blDJ99wKLz5pabEVxgZBcpmDoGadO'
+    oauth = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
 
-        # Import the necessary methods from "twitter" library
+    twitter_stream = TwitterStream(auth=oauth)
+    iterator = twitter_stream.statuses.sample()
+
+    tweet_count = 1000
+    for tweet in iterator:
+        try:
+            #print(json.dumps(tweet))
+            if tweet_count <= 0:
+                break
+            if 'text' in tweet:  # only messages contains 'text' field is a tweet
+                tweet_count -= 1
+                print "text: " + tweet['text']  # content of the tweet
+                print "location: " + tweet['user']['location']
+                print "tweet: " + tweet['user']['name']  # name of the user, e.g. "Wei Xu"
+                # print tweet['user']['screen_name'] # name of the user account, e.g. "cocoweixu"
+
+                hashtags = []
+                for hashtag in tweet['entities']['hashtags']:
+                    hashtags.append(hashtag['text'])
+                print "hashtags: ", hashtags
+
+        except:
+            print "cucked"
+            # read in a line is not in JSON format (sometimes error occured)
+            continue
+
+
+    return render_template('index.html')
+
+
+    '''# Import the necessary methods from "twitter" library
     from twitter import Twitter, OAuth, TwitterHTTPError, TwitterStream
 
     # Variables that contains the user credentials to access Twitter API
@@ -48,4 +88,4 @@ def hello_world():
         ans = ans+str(tweets)
     return ans
     #return tweets
-
+'''
