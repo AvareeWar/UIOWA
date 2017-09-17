@@ -17,11 +17,9 @@ oauth = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
 
 # Initiate the connection to Twitter Streaming API
 twitter_stream = TwitterStream(auth=oauth)
-
 # Get a sample of the public data following through Twitter
 iterator = twitter_stream.statuses.sample()
 
-# Print each tweet in the stream to the screen 
 # Here we set it to stop after getting 1000 tweets. 
 # You don't have to set it to stop, but can continue running 
 # the Twitter API to collect data for days or even longer. 
